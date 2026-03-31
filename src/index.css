@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-dark-bg: #050505;
+  --color-accent: #C5A059;
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-[#e0e0e0] font-sans overflow-x-hidden;
+  }
+  
+  h1, h2, h3 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .glass-header {
+    @apply bg-[#050505]/80 backdrop-blur-xl border-b border-border;
+  }
+
+  .bento-item {
+    @apply bg-glass border border-border rounded-[24px] p-8 transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] relative overflow-hidden;
+  }
+
+  .bento-item:hover {
+    @apply border-accent -translate-y-1.5 bg-accent/5;
+  }
+
+  .btn-premium {
+    @apply bg-accent text-black py-4 px-10 rounded-full font-semibold transition-all duration-300 inline-block uppercase tracking-wider text-sm;
+  }
+
+  .btn-premium:hover {
+    @apply shadow-[0_0_25px_rgba(197,160,89,0.4)] scale-105;
+  }
+
+  .text-gradient {
+    @apply bg-linear-to-br from-white to-accent bg-clip-text text-transparent;
+  }
+
+  .grain {
+    @apply fixed top-0 left-0 w-full h-full pointer-events-none z-[9999] opacity-[0.03];
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+  }
+}
